@@ -1,0 +1,281 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+#include "../meshSetup"
+libs ("/home/jagdeeps/projects/def-alamj/shared/libs/v6/libAtmosphericTurbulenceModelsDev.so"
+      // "/home/jagdeeps/projects/def-alamj/shared/libs/libWindTurbineModels.so"
+      //"/home/jagdeeps/projects/def-alamj/shared/libs/AWCMsources.so"
+      // "/home/jagdeeps/projects/def-alamj/shared/libs/WindFarm/csmModel.so"
+      "/home/jagdeeps/projects/def-alamj/shared/libs/WindFarm/V6alamjag.so"
+      );
+application     awcm;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         7250;
+
+deltaT         0.001; // 0.0025;
+
+//writeControl    timeStep;
+
+writeControl    adjustableRunTime;
+
+writeInterval  2;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+adjustTimeStep   yes;
+
+maxCo            1.2;
+
+
+functions
+{
+    fieldAverage1
+    {
+        type            fieldAverage;
+        functionObjectLibs ( "libfieldFunctionObjects.so" );
+        enabled         true;
+        writeControl   outputTime;
+	resetOnRestart  true;
+	
+        fields
+        (
+            U
+            {
+                mean        on;
+                prime2Mean  on;
+                base        time;
+		window      40;
+            }
+
+        );
+    }
+
+postAtmosphericLES
+{
+  	functionObjectLibs ("libutilityFunctionObjects.so");
+	type coded;
+	redirectType postAtmosphericLES;
+	writeControl outputTime;
+	           
+	codeInclude
+	#{
+	  #include "turbulenceModel.H"
+	  #include "turbulentTransportModel.H"
+	#};
+
+    codeOptions
+    #{
+    -I$(LIB_SRC)/meshTools/lnInclude    \
+    -I$(FOAM_SRC)/TurbulenceModels/turbulenceModels/lnInclude \
+    -I$(FOAM_SRC)/TurbulenceModels/incompressible/lnInclude	 \
+    -I$(FOAM_SRC)/transportModels				 \
+    #};
+    
+    codeExecute
+#{
+
+// .................. Code: volVectorField/volScalarField................
+
+     // nstateneous velocity: U
+     const volVectorField& U = mesh().lookupObject<volVectorField>("U");
+     scalar volU = average(mag(U)).value();
+     Info << "avgU: " << volU << nl;
+
+     //kinematic viscosity
+     const volScalarField& nu  =  mesh().lookupObject<volScalarField>("nu");
+     scalar volnu = average(mag(nu)).value();
+     // sgs viscosity
+     const volScalarField& nuSgs  =  mesh().lookupObject<volScalarField>("nut"); 
+     scalar volnuSgs = average(mag(nuSgs)).value();
+    
+     // total E
+      scalar E = 0.5 * average(magSqr(U)).value();
+      Info << "Tot_kintic E : " << E << nl;
+
+      // total enstrophy:w
+      volScalarField w= magSqr(fvc::curl(U)); 
+      scalar volw = 0.5 * average(mag(w)).value();
+      //Info << "total_enstrophy : " << volw << nl;
+
+     //instateneous energy dissipation
+     volSymmTensorField S(symm(fvc::grad(U)));
+      
+     volScalarField D(2.0 *nu*(S && S)); 
+     scalar volD = average(mag(D)).value();
+     //Info << "tot_Dissipation: " << volD << nl;
+
+     volScalarField DT(2.0 *nuSgs*(S && S)); 
+     scalar volDT = average(mag(DT)).value();
+     //Info << "tot_Dissipation: " << volDT << nl;
+
+     //Umean
+     const volVectorField& UMean = U.db().objectRegistry::lookupObject<volVectorField>("UMean");
+     // Instantaneous prime
+     const volVectorField UPrime = U - UMean;
+     scalar volUPrime = average(mag(UPrime)).value(); // volUprime
+
+     //<<<<<<<<<<<<<<< Turbulence SGS model >>>>>>>>>>>>>>>>>>
+
+      const Foam::incompressible::turbulenceModel&  turbulence = mesh().thisDb().lookupObject<Foam::incompressible::turbulenceModel>("turbulenceProperties");
+      const tmp<volScalarField> tk = turbulence.k();
+      const volScalarField&      k = tk();
+      scalar volksgs=average(k).value(); // sgs TKE
+      Info << "kSgs: " << volksgs << nl;
+
+      const tmp<volScalarField>  epsilon = turbulence.epsilon();
+      const volScalarField&      e = epsilon();
+      scalar volesgs = average(e).value(); // SGS vol average turbulence dessipation 
+      Info << "eSgs: " << volesgs << nl;
+
+      //Delta filter width based on turbulence model
+      scalar Deltasgs = pow(volksgs,1.5)/volesgs ;
+      Info << "DeltaSGS " << Deltasgs << nl;
+
+//Urms calcualtion:
+      const volSymmTensorField& UPrime2Mean = U.db().objectRegistry::lookupObject<volSymmTensorField>("UPrime2Mean");
+      scalar volUPrime2Mean = average(mag(UPrime2Mean)).value();
+       //Info << "UPrime2Mean: " << volUPrime2Mean << nl;
+
+      // Square of urms
+      volScalarField Txx(UPrime2Mean.component(symmTensor::XX));
+      scalar volTxx = average(mag(Txx)).value();  
+      // Square of vrms
+      volScalarField Tyy(UPrime2Mean.component(symmTensor::YY));
+      scalar volTyy = average(mag(Tyy)).value();
+      // Square of wrms
+      volScalarField Tzz(UPrime2Mean.component(symmTensor::ZZ));
+      scalar volTzz = average(mag(Tzz)).value();
+
+      //Kinetic energy in the cv resolved   
+      volScalarField K_res1 = 0.5 * (Txx + Tyy + Tzz);
+      scalar Kres = average(K_res1).value();
+      Info<<"Kinetic Energy of Resolved scales " << Kres << nl;
+   
+      //urms
+      volScalarField Urms = 0.58 * sqrt(Txx + Tyy + Tzz); 
+      scalar volUrms = average(mag(Urms)).value(); 
+      scalar lam2 = sqrt(15.0 * volnu/volD) * volUrms;
+      //Info << "Urms: " << volUrms<< nl;
+      Info << "lam2: " << lam2<< nl;
+
+// calculate Reynolds number Rel and Ce: L=1
+     scalar Re = volU/volnu;
+     //Info << "Re: " << Re << nl;
+
+//Taylor microscale : L (Dr. Alam sir)
+     volScalarField SS = (S && S);
+     scalar volSS = average(mag(SS)).value();
+
+     scalar TayL = sqrt(15* E/volSS);
+     Info << "TayL: " << TayL<< nl;
+
+// Vortex stretcing: w_i * w_j * S_{ij}
+    volVectorField omega = fvc::curl(U);
+    scalar VortexStretchingValue = average( omega & (omega & S) ).value();
+    scalar Sk = - 6.0/7.0 * Foam::sqrt(15.0) * VortexStretchingValue /Foam::pow(2.0*volw,3.0/2.0);
+    Info << "Sk: " << Sk << nl;
+
+//>>>>>>>>>>>>> Calculate Cw and Lsgs <<<<<<<<<<<<<
+      
+      
+      volTensorField gijk = (fvc::grad(U));
+      volTensorField gij = (gijk & gijk);
+      volSymmTensorField  Sd((dev(symm(gij))));
+      //Dissipation rate
+      volScalarField epsN1(2 * volnuSgs * (S && S));
+      scalar epsN = average(epsN1).value();
+
+      scalar Seps = epsN/(volesgs+epsN);
+      
+      Info<<"Dissipation Ratio "<< Seps<<nl;
+      
+      //volSymmTensorField Sd(dev(symm(gij & gij)));
+      volScalarField magSqrSd= magSqr(Sd);
+      
+      volScalarField Sijsq = magSqr(S);
+
+      volScalarField OP1 =  Foam::pow(magSqrSd,3.0/2.0);
+
+      volScalarField OP2 = Foam::pow(Sijsq,5.0/2.0)+ Foam::pow(magSqrSd,5.0/4.0);
+
+      volScalarField Sijn1 = 1.414213562 * Foam::pow(Sijsq,3.0/2.0);
+
+      volScalarField Waleden = Sijsq * OP1/OP2;
+      
+      scalar avgWaleden = average(Waleden).value();
+      scalar avgWalenum = average(Sijn1).value();
+      
+      scalar Cw = sqr(0.18)*(avgWalenum/avgWaleden);
+
+      scalar Cwale = Foam::pow(Cw,0.5);
+      Info << "Cwale " << Cwale << nl;
+
+
+//....................... output.tex...............
+
+ ofstream fout;
+ if(Pstream::myProcNo() == 0)
+
+   {
+     if( mesh().time().deltaTValue() == mesh().time().value() )
+       fout.open("out.dat", std::ofstream::out );
+     else
+       fout.open("out.dat", std::ofstream::out | std::ofstream::app);
+     fout << mesh().time().value() << "\t" << volU << "\t" << E << "\t" << volw << "\t" << volD << "\t"<< volDT <<"\t" << Re << "\t" << volnuSgs << "\t" << TayL << "\t" << lam2 << "\t"<< Sk << "\t" << volUrms << "\t" << volUPrime << "\t" << Kres << "\t" << volksgs << "\t" << volTxx << "\t"<<Cwale<<"\n";
+     fout.close();
+   }
+
+#};
+
+}
+  
+
+
+    #includeFunc probes
+    //  #includeFunc singleGraph1
+  //  #includeFunc singleGraph2
+  //  #includeFunc singleGraph3
+  //  #includeFunc singleGraph4
+  //  #includeFunc singleGraph5
+  //  #includeFunc surfaces1
+  // #includeFunc surfaces2
+   // #includeFunc surfaces3
+  //  #includeFunc surfaces4
+   // #includeFunc surfaces5
+   #includeFunc wallShearStress
+    
+}
+
+// ************************************************************************* //

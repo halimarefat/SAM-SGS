@@ -1,0 +1,65 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     |
+    \\  /    A nd           | Web:      www.OpenFOAM.org
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+Description
+    Writes out values of fields from cells nearest to specified locations.
+
+\*---------------------------------------------------------------------------*/
+#include "../meshSetup"
+
+#includeEtc "caseDicts/postProcessing/probes/probes.cfg"
+
+fields (U UMean UPrime2Mean);
+probeLocations
+(
+   ($p1x1 $p1y1 $p1z1)
+   ($p2x1 $p2y1 $p2z1)
+   ($p3x1 $p3y1 $p3z1)
+   ($p4x1 $p4y1 $p4z1)
+   
+   ($p5x1 $p5y1 $p5z1)
+   ($p6x1 $p6y1 $p6z1)
+   ($p7x1 $p7y1 $p7z1)
+   
+   ($p8x1 $p8y1 $p8z1)
+   ($p9x1 $p9y1 $p9z1)
+   ($p10x1 $p10y1 $p10z1)
+   
+   ($p11x1 $p11y1 $p11z1)
+   ($p12x1 $p12y1 $p12z1)
+   ($p13x1 $p13y1 $p13z1)
+   
+   ($p14x1 $p14y1 $p14z1)
+   ($p15x1 $p15y1 $p15z1)
+   ($p16x1 $p16y1 $p16z1)
+   
+   ($p17x1 $p17y1 $p17z1)
+   ($p18x1 $p18y1 $p18z1)
+   ($p19x1 $p19y1 $p19z1)
+   
+   ($p20x1 $p20y1 $p20z1)
+   ($p21x1 $p21y1 $p21z1)
+   ($p22x1 $p22y1 $p22z1)
+   
+   ($p23x1 $p23y1 $p23z1)
+   ($p24x1 $p24y1 $p24z1)
+   ($p25x1 $p25y1 $p25z1)
+   
+   ($p26x1 $p26y1 $p26z1)
+   ($p27x1 $p27y1 $p27z1)
+   ($p28x1 $p28y1 $p28z1)
+   
+   ($p29x1 $p29y1 $p29z1)
+   ($p30x1 $p30y1 $p30z1)
+
+   //Ist column
+ 
+      
+);
+
+
+// ************************************************************************* //

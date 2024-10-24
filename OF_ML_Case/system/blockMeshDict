@@ -1,0 +1,106 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+#include "../meshSetup";
+
+convertToMeters $Scale;
+
+vertices
+(
+    ($xMin  $yMin  $zMin) //0
+    ($xMax  $yMin  $zMin) //1
+    ($xMin  $yMax  $zMin) //2
+    ($xMax  $yMax  $zMin) //3
+    ($xMin  $yMin  $zHalf) //4
+    ($xMax  $yMin  $zHalf) //5
+    ($xMin  $yMax  $zHalf) //6
+    ($xMax  $yMax  $zHalf) //7
+    ($xMin  $yMin  $zMax) //8
+    ($xMax  $yMin  $zMax) //9
+    ($xMin  $yMax  $zMax) //10
+    ($xMax  $yMax  $zMax) //11
+
+);
+
+blocks
+(
+     hex (0 1 3 2 4 5 7 6)   ($Nx $Ny $NzHalf) simpleGrading (1 1 $zStrch)
+     hex (4 5 7 6 8 9 11 10) ($Nx $Ny $Nz) simpleGrading (1 1 1)
+
+ );
+
+edges
+(
+);
+
+boundary
+(
+    ground
+    {
+      type            wall;
+      faces           ((0 1 3 2));
+    }
+    atmosphere
+    {
+      type              symmetryPlane;
+      faces           ((8 9 11 10));
+    }
+    
+    front
+    {
+      type            cyclic;
+      neighbourPatch  back;
+      faces           (
+		       (0 1 5 4)
+		       (4 5 8 9)
+		       );
+    }
+    back
+    {
+      type            cyclic;
+      neighbourPatch front;
+      faces           (
+		       (2 3 7 6)
+		       (6 7 11 10)
+		       );
+    }
+    
+    outlet
+    {
+      type            patch;
+      //neighbourPatch inlet;
+      faces           (
+		       (1 3 7 5)
+		       (5 7 11 9)
+		       );
+    }
+    inlet
+    {
+      type            patch;
+      //neighbourPatch outlet;
+      faces           (
+		       (0 2 6 4)
+		       (4 6 10 8)
+		       );
+    }
+    
+ );
+
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //

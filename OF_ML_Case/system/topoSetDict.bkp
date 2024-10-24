@@ -1,0 +1,421 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+
+#include "../meshSetup"
+
+actions
+(
+
+ {
+    name    $name1;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t1x1 $t1y1 $t1z1);
+        p2      ($t1x2 $t1y2 $t1z2);
+        radius      $radius;
+      }
+}
+
+{
+    name    $name2;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t1x1 $t1y1 $t1z1);
+        p2      ($t1x2 $t1y2 $t1z2);
+        radius      0.050;
+      }
+}
+/*
+{
+    name    $name3;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t3x1 $t3y1 $t3z1);
+        p2      ($t3x2 $t3y2 $t3z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name4;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t4x1 $t4y1 $t4z1);
+        p2      ($t4x2 $t4y2 $t4z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name5;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t5x1 $t5y1 $t5z1);
+        p2      ($t5x2 $t5y2 $t5z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name6;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t6x1 $t6y1 $t6z1);
+        p2      ($t6x2 $t6y2 $t6z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name7;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t7x1 $t7y1 $t7z1);
+        p2      ($t7x2 $t7y2 $t7z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name8;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t8x1 $t8y1 $t8z1);
+        p2      ($t8x2 $t8y2 $t8z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name9;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t9x1 $t9y1 $t9z1);
+        p2      ($t9x2 $t9y2 $t9z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name10;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t10x1 $t10y1 $t10z1);
+        p2      ($t10x2 $t10y2 $t10z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name11;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t11x1 $t11y1 $t11z1);
+        p2      ($t11x2 $t11y2 $t11z2);
+        radius      $radius;
+      }
+}
+
+{
+    name    $name12;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t12x1 $t12y1 $t12z1);
+        p2      ($t12x2 $t12y2 $t12z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name13;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t13x1 $t13y1 $t13z1);
+        p2      ($t13x2 $t13y2 $t13z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name14;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t14x1 $t14y1 $t14z1);
+        p2      ($t14x2 $t14y2 $t14z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name15;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t15x1 $t15y1 $t15z1);
+        p2      ($t15x2 $t15y2 $t15z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name16;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t16x1 $t16y1 $t16z1);
+        p2      ($t16x2 $t16y2 $t16z2);
+        radius      $radius;
+      }
+}
+
+{
+    name    $name17;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t17x1 $t17y1 $t17z1);
+        p2      ($t17x2 $t17y2 $t17z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name18;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t18x1 $t18y1 $t18z1);
+        p2      ($t18x2 $t18y2 $t18z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name19;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t19x1 $t19y1 $t19z1);
+        p2      ($t19x2 $t19y2 $t19z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name20;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t20x1 $t20y1 $t20z1);
+        p2      ($t20x2 $t20y2 $t20z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name21;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t21x1 $t21y1 $t21z1);
+        p2      ($t21x2 $t21y2 $t21z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name22;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t22x1 $t22y1 $t22z1);
+        p2      ($t22x2 $t22y2 $t22z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name23;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t23x1 $t23y1 $t23z1);
+        p2      ($t23x2 $t23y2 $t23z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name24;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t24x1 $t24y1 $t24z1);
+        p2      ($t24x2 $t24y2 $t24z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name25;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t25x1 $t25y1 $t25z1);
+        p2      ($t25x2 $t25y2 $t25z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name26;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t26x1 $t26y1 $t26z1);
+        p2      ($t26x2 $t26y2 $t26z2);
+        radius      $radius;
+      }
+}
+
+{
+    name    $name27;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t27x1 $t27y1 $t27z1);
+        p2      ($t27x2 $t27y2 $t27z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name28;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t28x1 $t28y1 $t28z1);
+        p2      ($t28x2 $t28y2 $t28z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name29;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t29x1 $t29y1 $t29z1);
+        p2      ($t29x2 $t29y2 $t29z2);
+        radius      $radius;
+      }
+}
+{
+    name    $name30;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        p1      ($t30x1 $t30y1 $t30z1);
+        p2      ($t30x2 $t30y2 $t30z2);
+        radius      $radius;
+      }
+}
+
+*/
+
+);
+
+// ************************************************************************* //

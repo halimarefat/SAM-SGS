@@ -1,0 +1,6 @@
+      type                 atmRoughWallFunction;
+
+      roughnessHeight      0.03;
+      roughnessConstant    0.5;
+      roughnessFactor      1;
+      value                uniform 0.0;

@@ -1,0 +1,98 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+#include "../meshSetup"
+libs ("~/projects/def-alamj/shared/libs/v6/libAtmosphericTurbulenceModelsRec.so"
+      // "~/projects/def-alamj/shared/libs/v6/libgaussianActuationSource.so"
+      // "~/projects/def-alamj/shared/libs/WindFarm/wakeModel2016.so"
+      );
+application     awcm;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         500;
+
+deltaT         0.005; // 0.0025;
+
+//writeControl    timeStep;
+
+writeControl    adjustableRunTime;
+
+writeInterval  2;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+adjustTimeStep   no;
+
+maxCo            1.2;
+
+
+functions
+{
+    fieldAverage1
+    {
+        type            fieldAverage;
+        functionObjectLibs ( "libfieldFunctionObjects.so" );
+        enabled         true;
+        writeControl   outputTime;
+	resetOnRestart  true;
+	
+        fields
+        (
+            U
+            {
+                mean        on;
+                prime2Mean  on;
+                base        time;
+		window      100;
+            }
+
+        );
+    }
+    
+    #includeFunc probes
+    //  #includeFunc singleGraph1
+  //  #includeFunc singleGraph2
+  //  #includeFunc singleGraph3
+  //  #includeFunc singleGraph4
+  //  #includeFunc singleGraph5
+  //  #includeFunc surfaces1
+  // #includeFunc surfaces2
+   // #includeFunc surfaces3
+  //  #includeFunc surfaces4
+   // #includeFunc surfaces5
+  //  #includeFunc wallShearStress
+    
+}
+
+// ************************************************************************* //

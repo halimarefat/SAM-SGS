@@ -1,0 +1,417 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \    /   O peration     | Version:  3.0.x                                 |
+|   \  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+//rotor diameter
+Scale 1;
+
+xMin -2;
+xMax 13;
+
+yMin 0;
+yMax 3.0; //1.8;
+
+zMin 0;
+zMax 0.675;
+
+//Height of the bottom hex
+zHalf 0.3375;
+
+Nx    750;
+Ny    150;
+Nz    34; 
+NzHalf 34; 
+
+//xStrch 1;
+zStrch 1.0;
+//.......................Initial Condition Begins...........//
+/*
+Initial Conditions parameters goes to /constant/initialABLdict
+*/
+
+set_Mean true;
+set_MeanEkman false;
+set_Perturb false;
+set_TaylorGreen2D false;
+set_RandomNoise  false;
+set_Temperature         false;
+//span_Frequency   64;
+//stream_Frequency  32;
+decay_Rate        5e-4;
+ekman_Depth       160;
+//.......................Initial Conditions Ends...........//
+
+//Inlet condition: Ekman Turbulent Inlet with vortex method
+inlet_Type  turbulentEkmanInflow;
+print_Coeff 1;
+turbulentSpot 1350; //2880
+ref_Height  0.1245;
+ref_Velocity 2.2;
+roughness_Height 2.997e-5;
+ekman_Velocity 0;
+ground_Height 0;
+friction_Velocity 0;
+von_Karman   0.41;
+wind_Direction 0;
+Value      uniform (1 0 0);
+flow_Direction   (1 0 0);
+        
+//nutBC Roughness parameter
+nut_Type    atmRoughWallFunction;
+nut_Constant    0.5;
+nut_Factor    1;
+nut_Value    uniform 0.0;
+
+
+/*
+ domain decomposition
+ ---------------------
+
+ nDomains = Sx * Sy * Sz
+ number of partitions in x direction = Sx
+ number of partitions in y direction = Sy
+ number of partitions in z direction = Sz
+
+ */
+nDomains 48; //64; //128; 
+Sx       6; //8; 
+Sy       4; 
+Sz       2; //4;
+
+method   simple;
+
+
+//Turbine Settings
+source            sphereToCell;
+TURBINE           ActuatorDiskSource; //gaussianActuation;
+TURBINE_COEFFS    ActuatorDiskSourceCoeffs; //gaussianActuationCoeffs;
+DISK_AREA         0.0177;
+radius            0.075;
+DELTA             0.040; 
+
+
+CP1       0.5625; 
+CT1       0.75; 
+
+CP2       0.5925; 
+CT2       0.8899; 
+
+CP3       0.5884; 
+CT3       0.9286; 
+
+CP4       0.5884;
+CT4       0.9286;
+
+CP5       0.5924;
+CT5       0.8799;
+
+CP6       0.5814;
+CT6       0.9496;
+
+CP7       0.5887;
+CT7       0.9269;
+
+CP8       0.5922;
+CT8       0.8768;
+
+CP9       0.5925;
+CT9       0.8831;
+
+CP10      0.5925;
+CT10      0.8899;
+
+
+//turbine location
+
+yCol1  0.3;
+yCol2  0.9;
+yCol3  1.5;
+yCol4  2.1;
+yCol5 2.7;
+Hhub   0.1245;
+xRow1  0.75;
+xRow2  1.5;
+xRow3  2.25;
+xRow4  3.0;
+xRow5  3.75;
+xRow6  4.5;
+xRow7  5.25;
+xRow8  6.0;
+xRow9  6.75;
+xRow10 7.5;
+
+//turbine location
+
+name1    turbine1;
+name2    turbine2;
+name3    turbine3;
+name4    turbine4;
+name5    turbine5;
+name6    turbine6;
+name7    turbine7;
+name8    turbine8;
+name9    turbine9;
+name10    turbine10;
+name11    turbine11;
+name12    turbine12;
+name13    turbine13;
+name14    turbine14;
+name15    turbine15;
+name16    turbine16;
+name17    turbine17;
+name18    turbine18;
+name19    turbine19;
+name20    turbine20;
+name21    turbine21;
+name22    turbine22;
+name23    turbine23;
+name24    turbine24;
+name25    turbine25;
+name26    turbine26;
+name27    turbine27;
+name28    turbine28;
+name29    turbine29;
+name30    turbine30;
+name31    turbine31;
+name32    turbine32;
+name33    turbine33;
+name34    turbine34;
+name35    turbine35;
+name36    turbine36;
+name37    turbine37;
+name38    turbine38;
+name39    turbine39;
+name40    turbine40;
+name41    turbine41;
+name42    turbine42;
+name43    turbine43;
+name44    turbine44;
+name45    turbine45;
+name46    turbine46;
+name47    turbine47;
+name48    turbine48;
+name49    turbine49;
+name50    turbine50;
+
+// row 1
+r1c1x   $xRow1;
+r1c1y   $yCol1;
+r1c1z   $Hhub;
+
+r1c2x   $xRow1;
+r1c2y   $yCol2;
+r1c2z   $Hhub;
+
+r1c3x   $xRow1;
+r1c3y   $yCol3;
+r1c3z   $Hhub;
+
+r1c4x   $xRow1;
+r1c4y   $yCol4;
+r1c4z   $Hhub;
+
+r1c5x   $xRow1;
+r1c5y   $yCol5;
+r1c5z   $Hhub;
+
+// row 2
+r2c1x   $xRow2;
+r2c1y   $yCol1;
+r2c1z   $Hhub;
+
+r2c2x   $xRow2;
+r2c2y   $yCol2;
+r2c2z   $Hhub;
+
+r2c3x   $xRow2;
+r2c3y   $yCol3;
+r2c3z   $Hhub;
+
+r2c4x   $xRow2;
+r2c4y   $yCol4;
+r2c4z   $Hhub;
+
+r2c5x   $xRow2;
+r2c5y   $yCol5;
+r2c5z   $Hhub;
+
+// row 3
+r3c1x   $xRow3;
+r3c1y   $yCol1;
+r3c1z   $Hhub;
+
+r3c2x   $xRow3;
+r3c2y   $yCol2;
+r3c2z   $Hhub;
+
+r3c3x   $xRow3;
+r3c3y   $yCol3;
+r3c3z   $Hhub;
+
+r3c4x   $xRow3;
+r3c4y   $yCol4;
+r3c4z   $Hhub;
+
+r3c5x   $xRow3;
+r3c5y   $yCol5;
+r3c5z   $Hhub;
+
+// row 4
+r4c1x   $xRow4;
+r4c1y   $yCol1;
+r4c1z   $Hhub;
+
+r4c2x   $xRow4;
+r4c2y   $yCol2;
+r4c2z   $Hhub;
+
+r4c3x   $xRow4;
+r4c3y   $yCol3;
+r4c3z   $Hhub;
+
+r4c4x   $xRow4;
+r4c4y   $yCol4;
+r4c4z   $Hhub;
+
+r4c5x   $xRow4;
+r4c5y   $yCol5;
+r4c5z   $Hhub;
+
+// row 5
+r5c1x   $xRow5;
+r5c1y   $yCol1;
+r5c1z   $Hhub;
+
+r5c2x   $xRow5;
+r5c2y   $yCol2;
+r5c2z   $Hhub;
+
+r5c3x   $xRow5;
+r5c3y   $yCol3;
+r5c3z   $Hhub;
+
+r5c4x   $xRow5;
+r5c4y   $yCol4;
+r5c4z   $Hhub;
+
+r5c5x   $xRow5;
+r5c5y   $yCol5;
+r5c5z   $Hhub;
+
+// row 6
+r6c1x   $xRow6;
+r6c1y   $yCol1;
+r6c1z   $Hhub;
+
+r6c2x   $xRow6;
+r6c2y   $yCol2;
+r6c2z   $Hhub;
+
+r6c3x   $xRow6;
+r6c3y   $yCol3;
+r6c3z   $Hhub;
+
+r6c4x   $xRow6;
+r6c4y   $yCol4;
+r6c4z   $Hhub;
+
+r6c5x   $xRow6;
+r6c5y   $yCol5;
+r6c5z   $Hhub;
+
+// row 7
+r7c1x   $xRow7;
+r7c1y   $yCol1;
+r7c1z   $Hhub;
+
+r7c2x   $xRow7;
+r7c2y   $yCol2;
+r7c2z   $Hhub;
+
+r7c3x   $xRow7;
+r7c3y   $yCol3;
+r7c3z   $Hhub;
+
+r7c4x   $xRow7;
+r7c4y   $yCol4;
+r7c4z   $Hhub;
+
+r7c5x   $xRow7;
+r7c5y   $yCol5;
+r7c5z   $Hhub;
+
+// row 8
+r8c1x   $xRow8;
+r8c1y   $yCol1;
+r8c1z   $Hhub;
+
+r8c2x   $xRow8;
+r8c2y   $yCol2;
+r8c2z   $Hhub;
+
+r8c3x   $xRow8;
+r8c3y   $yCol3;
+r8c3z   $Hhub;
+
+r8c4x   $xRow8;
+r8c4y   $yCol4;
+r8c4z   $Hhub;
+
+r8c5x   $xRow8;
+r8c5y   $yCol5;
+r8c5z   $Hhub;
+
+// row 9
+r9c1x   $xRow9;
+r9c1y   $yCol1;
+r9c1z   $Hhub;
+
+r9c2x   $xRow9;
+r9c2y   $yCol2;
+r9c2z   $Hhub;
+
+r9c3x   $xRow9;
+r9c3y   $yCol3;
+r9c3z   $Hhub;
+
+r9c4x   $xRow9;
+r9c4y   $yCol4;
+r9c4z   $Hhub;
+
+r9c5x   $xRow9;
+r9c5y   $yCol5;
+r9c5z   $Hhub;
+
+// row 10
+r10c1x   $xRow10;
+r10c1y   $yCol1;
+r10c1z   $Hhub;
+
+r10c2x   $xRow10;
+r10c2y   $yCol2;
+r10c2z   $Hhub;
+
+r10c3x   $xRow10;
+r10c3y   $yCol3;
+r10c3z   $Hhub;
+
+r10c4x   $xRow10;
+r10c4y   $yCol4;
+r10c4z   $Hhub;
+
+r10c5x   $xRow10;
+r10c5y   $yCol5;
+r10c5z   $Hhub;
+

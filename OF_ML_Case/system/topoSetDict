@@ -1,0 +1,674 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+
+#include "../meshSetup"
+
+actions
+(
+  {
+    name    $name1;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        centre      ($r1c1x $r1c1y $r1c1z);
+        radius      $radius;
+      }
+  }
+
+  {
+      name    $name2;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r1c2x $r1c2y $r1c2z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name3;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r1c3x $r1c3y $r1c3z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name4;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r1c4x $r1c4y $r1c4z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name5;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r1c5x $r1c5y $r1c5z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name6;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r2c1x $r2c1y $r2c1z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name7;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r2c2x $r2c2y $r2c2z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name8;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r2c3x $r2c3y $r2c3z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name9;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r2c4x $r2c4y $r2c4z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name10;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r2c5x $r2c5y $r2c5z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name11;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r3c1x $r3c1y $r3c1z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name12;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r3c2x $r3c2y $r3c2z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name13;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r3c3x $r3c3y $r3c3z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name14;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r3c4x $r3c4y $r3c4z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name15;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r3c5x $r3c5y $r3c5z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name16;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r4c1x $r4c1y $r4c1z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name17;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r4c2x $r4c2y $r4c2z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name18;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r4c3x $r4c3y $r4c3z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name19;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r4c4x $r4c4y $r4c4z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name20;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r4c5x $r4c5y $r4c5z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name21;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r5c1x $r5c1y $r5c1z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name22;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r5c2x $r5c2y $r5c2z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name23;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r5c3x $r5c3y $r5c3z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name24;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r5c4x $r5c4y $r5c4z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name25;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r5c5x $r5c5y $r5c5z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name26;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r6c1x $r6c1y $r6c1z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name27;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r6c2x $r6c2y $r6c2z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name28;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r6c3x $r6c3y $r6c3z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name29;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r6c4x $r6c4y $r6c4z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name30;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r6c5x $r6c5y $r6c5z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name31;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r7c1x $r7c1y $r7c1z);
+          radius      $radius;
+        }
+  }
+
+  {
+    name    $name32;
+    type    cellSet;
+    action  new;
+    source  $source;
+
+    sourceInfo
+      {
+        centre      ($r7c2x $r7c2y $r7c2z);
+        radius      $radius;
+      }
+  }
+
+  {
+      name    $name33;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r7c3x $r7c3y $r7c3z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name34;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r7c4x $r7c4y $r7c4z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name35;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r7c5x $r7c5y $r7c5z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name36;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r8c1x $r8c1y $r8c1z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name37;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r8c2x $r8c2y $r8c2z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name38;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r8c3x $r8c3y $r8c3z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name39;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r8c4x $r8c4y $r8c4z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name40;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r8c5x $r8c5y $r8c5z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name41;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r9c1x $r9c1y $r9c1z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name42;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r9c2x $r9c2y $r9c2z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name43;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r9c3x $r9c3y $r9c3z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name44;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r9c4x $r9c4y $r9c4z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name45;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r9c5x $r9c5y $r9c5z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name46;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r10c1x $r10c1y $r10c1z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name47;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r10c2x $r10c2y $r10c2z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name48;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r10c3x $r10c3y $r10c3z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name49;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r10c4x $r10c4y $r10c4z);
+          radius      $radius;
+        }
+  }
+
+  {
+      name    $name50;
+      type    cellSet;
+      action  new;
+      source  $source;
+
+      sourceInfo
+        {
+          centre      ($r10c5x $r10c5y $r10c5z);
+          radius      $radius;
+        }
+  }
+
+
+
+);
+
+// ************************************************************************* //

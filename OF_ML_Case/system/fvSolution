@@ -1,0 +1,213 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+  /*J.Alam, 2011, modified in 2016, modified in 2017
+    From pitzDaily tutorial, we can see GAMG solver setting.
+    We need solver, tolerance, relTol, smoother.
+    Control the number of iterations by relTol, 
+    how much of the residual we want to minimize.
+    We are solving for p_rgh, which pressure - rho*g*h.
+    If the code is slow, first thing we need to check the GAMG solver.
+   */
+   p_rgh
+    {
+        solver          PBiCGStab;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       1e-05;
+            relTol          0;
+            nVcycles        2;
+            smoother        GaussSeidel;
+        }
+        tolerance       1e-05;
+        relTol          0;
+     //   maxIter         20;
+    }
+
+    p_rghFinal
+    {
+        $p_rgh;
+	/* We may need to turn of the follwoing */
+       // smoother        DICGaussSeidel;
+        // tolerance       1e-06;
+        relTol          0;
+    }
+
+   
+
+    "(U|T)"
+    {
+        solver          GAMG;
+        smoother        GaussSeidel;
+        tolerance       1e-05;
+        relTol          0.001;
+	// nSweeps         1;
+    }
+
+
+    "(U|T)Final"
+    {
+        $U;
+	//smoother        GaussSeidel;
+        tolerance       1e-05;
+        relTol          0;
+    }
+}
+
+PIMPLE
+{
+  /* Some times it may be a good idea to start 
+     with predicting momentum. Not good for low Re or multiphse flow.
+  */
+    //momentumPredictor no;
+  /* It is a PIMPLE thing. Total number of times the system is solved.
+     Typical value 1
+  */
+    nOuterCorrectors 1;
+    /* # of times the pressure equation is solved.
+       It is a costly step, theory indicates 2 is a good number
+     */
+    nCorrectors     2;
+    /* the following is 0 for steady state or 1. Typical value is 0*/
+    nNonOrthogonalCorrectors 0;
+    /* For an incopressible flow, pressure is up to a constant.
+       So, we need a reference point and a reference velue.
+       pRefValue = p_rgh + constant, which finds the constant.
+    */
+    pRefPoint        (0 0 0);
+    pRefValue       0e0;
+}
+
+
+// ************************************************************************* //
+
+
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+/*
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    p
+    {
+        solver          GAMG;
+        tolerance       0;
+        relTol          0.1;
+        smoother        GaussSeidel;
+        nPreSweeps      0;
+        nPostSweeps     2;
+        cacheAgglomeration true;
+        nCellsInCoarsestLevel 10;
+        agglomerator    faceAreaPair;
+        mergeLevels     1;
+    }
+
+    pFinal
+    {
+        $p;
+        smoother        DICGaussSeidel;
+        tolerance       1e-06;
+        relTol          0;
+    }
+   
+   p_rgh
+    {
+        solver          GAMG;
+        tolerance       0;
+        relTol          0.1;
+        smoother        GaussSeidel;
+        nPreSweeps      0;
+        nPostSweeps     2;
+        cacheAgglomeration true;
+        nCellsInCoarsestLevel 10;
+        agglomerator    faceAreaPair;
+        mergeLevels     1;
+    }
+
+    p_rghFinal
+    {
+        $p;
+        smoother        DICGaussSeidel;
+        tolerance       1e-06;
+        relTol          0;
+    }
+
+   
+
+   //"(U|T|k|epsilon|R|nuTilda)"
+    "(U|k|nuTilda|T)"
+    {
+       // solver          PBiCG;
+       // preconditioner  DILU;
+	solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-05;
+        relTol          0.1;
+    }
+
+
+    // "(U|T|k|epsilon|R|nuTilda)Final"
+    "(U|k|nuTilda|T)Final"
+    {
+        $U;
+        tolerance       1e-05;
+        relTol          0;
+    }
+}
+
+PIMPLE
+{
+    //momentumPredictor no;
+    nOuterCorrectors 2;
+    nCorrectors     2;
+    nNonOrthogonalCorrectors 0;
+    pRefPoint        (0 2 1);
+    //pRefCell        1001;
+    pRefValue       0;
+}
+
+/*
+
+relaxationFactors
+{
+    equations
+    {
+        "(U|T|k|epsilon|R)" 1;
+        "(U|T|k|epsilon|R)Final" 1;
+    }
+}
+
+*/
+
+// ************************************************************************* //

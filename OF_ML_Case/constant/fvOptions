@@ -1,0 +1,1125 @@
+/*--------------------------------*- C++ -*----------------------------------* \
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+#include "../meshSetup"
+
+turbine1
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine1;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP1;
+      Ct             $CT1;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r1c1x $r1c1y $r1c1z);
+    }
+}
+
+turbine2
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine2;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP1;
+      Ct             $CT1;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r1c2x $r1c2y $r1c2z);
+    }
+}
+
+turbine3
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine3;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP1;
+      Ct             $CT1;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r1c3x $r1c3y $r1c3z);
+    }
+}
+
+turbine4
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine4;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP1;
+      Ct             $CT1;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r1c4x $r1c4y $r1c4z);
+    }
+}
+
+turbine5
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine5;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP1;
+      Ct             $CT1;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r1c5x $r1c5y $r1c5z);
+    }
+}
+
+turbine6
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine6;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP2;
+      Ct             $CT2;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r2c1x $r2c1y $r2c1z);
+    }
+}
+
+turbine7
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine7;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP2;
+      Ct             $CT2;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r2c2x $r2c2y $r2c2z);
+    }
+}
+
+turbine8
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine8;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP2;
+      Ct             $CT2;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r2c3x $r2c3y $r2c3z);
+    }
+}
+
+turbine9
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine9;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP2;
+      Ct             $CT2;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r2c4x $r2c4y $r2c4z);
+    }
+}
+
+turbine10
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine10;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP2;
+      Ct             $CT2;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r2c5x $r2c5y $r2c5z);
+    }
+}
+
+turbine11
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine11;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP3;
+      Ct             $CT3;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r3c1x $r3c1y $r3c1z);
+    }
+}
+
+turbine12
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine12;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP3;
+      Ct             $CT3;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r3c2x $r3c2y $r3c2z);
+    }
+}
+
+turbine13
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine13;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP3;
+      Ct             $CT3;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r3c3x $r3c3y $r3c3z);
+    }
+}
+
+turbine14
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine14;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP3;
+      Ct             $CT3;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r3c4x $r3c4y $r3c4z);
+    }
+}
+
+turbine15
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine15;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP3;
+      Ct             $CT3;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r3c5x $r3c5y $r3c5z);
+    }
+}
+
+turbine16
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine16;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP4;
+      Ct             $CT4;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r4c1x $r4c1y $r4c1z);
+    }
+}
+
+turbine17
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine17;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP4;
+      Ct             $CT4;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r4c2x $r4c2y $r4c2z);
+    }
+}
+
+turbine18
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine18;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP4;
+      Ct             $CT4;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r4c3x $r4c3y $r4c3z);
+    }
+}
+
+turbine19
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine19;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP4;
+      Ct             $CT4;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r4c4x $r4c4y $r4c4z);
+    }
+}
+
+turbine20
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine20;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP4;
+      Ct             $CT4;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r4c5x $r4c5y $r4c5z);
+    }
+}
+
+turbine21
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine21;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP5;
+      Ct             $CT5;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r5c1x $r5c1y $r5c1z);
+    }
+}
+
+turbine22
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine22;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP5;
+      Ct             $CT5;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r5c2x $r5c2y $r5c2z);
+    }
+}
+
+turbine23
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine23;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP5;
+      Ct             $CT5;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r5c3x $r5c3y $r5c3z);
+    }
+}
+
+turbine24
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine24;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP5;
+      Ct             $CT5;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r5c4x $r5c4y $r5c4z);
+    }
+}
+
+turbine25
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine25;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP5;
+      Ct             $CT5;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r5c5x $r5c5y $r5c5z);
+    }
+}
+
+turbine26
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine26;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP6;
+      Ct             $CT6;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r6c1x $r6c1y $r6c1z);
+    }
+}
+
+turbine27
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine27;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP6;
+      Ct             $CT6;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r6c2x $r6c2y $r6c2z);
+    }
+}
+
+turbine28
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine28;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP6;
+      Ct             $CT6;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r6c3x $r6c3y $r6c3z);
+    }
+}
+
+turbine29
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine29;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP6;
+      Ct             $CT6;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r6c4x $r6c4y $r6c4z);
+    }
+}
+
+turbine30
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine30;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP6;
+      Ct             $CT6;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r6c5x $r6c5y $r6c5z);
+    }
+}
+
+turbine31
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine31;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP7;
+      Ct             $CT7;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r7c1x $r7c1y $r7c1z);
+    }
+}
+
+turbine32
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine32;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP7;
+      Ct             $CT7;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r7c2x $r7c2y $r7c2z);
+    }
+}
+
+turbine33
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine33;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP7;
+      Ct             $CT7;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r7c3x $r7c3y $r7c3z);
+    }
+}
+
+turbine34
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine34;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP7;
+      Ct             $CT7;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r7c4x $r7c4y $r7c4z);
+    }
+}
+
+turbine35
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine35;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP7;
+      Ct             $CT7;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r7c5x $r7c5y $r7c5z);
+    }
+}
+
+turbine36
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine36;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP8;
+      Ct             $CT8;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r8c1x $r8c1y $r8c1z);
+    }
+}
+
+turbine37
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine37;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP8;
+      Ct             $CT8;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r8c2x $r8c2y $r8c2z);
+    }
+}
+
+turbine38
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine38;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP8;
+      Ct             $CT8;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r8c3x $r8c3y $r8c3z);
+    }
+}
+
+turbine39
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine39;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP8;
+      Ct             $CT8;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r8c4x $r8c4y $r8c4z);
+    }
+}
+
+turbine40
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine40;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP8;
+      Ct             $CT8;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r8c5x $r8c5y $r8c5z);
+    }
+}
+
+turbine41
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine41;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP9;
+      Ct             $CT9;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r9c1x $r9c1y $r9c1z);
+    }
+}
+
+turbine42
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine42;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP9;
+      Ct             $CT9;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r9c2x $r9c2y $r9c2z);
+    }
+}
+
+turbine43
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine43;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP9;
+      Ct             $CT9;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r9c3x $r9c3y $r9c3z);
+    }
+}
+
+turbine44
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine44;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP9;
+      Ct             $CT9;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r9c4x $r9c4y $r9c4z);
+    }
+}
+
+turbine45
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine45;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP9;
+      Ct             $CT9;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r9c5x $r9c5y $r9c5z);
+    }
+}
+
+turbine46
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine46;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP10;
+      Ct             $CT10;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r10c1x $r10c1y $r10c1z);
+    }
+}
+
+turbine47
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine47;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP10;
+      Ct             $CT10;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r10c2x $r10c2y $r10c2z);
+    }
+}
+
+turbine48
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine48;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP10;
+      Ct             $CT10;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r10c3x $r10c3y $r10c3z);
+    }
+}
+
+turbine49
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine49;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP10;
+      Ct             $CT10;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r10c4x $r10c4y $r10c4z);
+    }
+}
+
+turbine50
+{
+  type     $TURBINE;
+  active   on;
+
+  $TURBINE_COEFFS
+    {
+      fields  (U);
+
+      selectionMode  cellSet;
+      cellSet        turbine50;
+      diskDir        (1 0 0);
+      dragDir        (0 1 0);
+      Cp             $CP10;
+      Ct             $CT10;
+      diskArea       $DISK_AREA;
+      sigma          $DELTA;
+      coeffs         (0.1 0.5 0.1); // radial distribution coefficients
+      upstreamPoint  ($r10c5x $r10c5y $r10c5z);
+    }
+}
+
+
+
+
+
+
+// ************************************************************************* //

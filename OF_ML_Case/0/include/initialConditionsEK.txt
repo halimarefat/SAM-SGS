@@ -1,0 +1,14 @@
+type            turbulentEkmanInflow;
+print           1;
+Zref            500;
+z0              0.03;
+Uref            11.0;
+turbulenceSpot  100;
+uEkman          0;
+zGround         0;
+uStar           0;
+kappa           0.41;
+windDir         0;
+value           uniform (1 0 0);
+flowDir         (1 0 0);
+ 
