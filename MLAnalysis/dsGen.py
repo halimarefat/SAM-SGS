@@ -92,12 +92,12 @@ def dataCollector(main_path):
 
 
     
-SA_path = '/home/hmarefat/scratch/Paper_3/WF_ADM_mesh5/140.004098/'
+SA_path = '/path/to/SA_Case/Timestep/'
 SA_ds = dataCollector(main_path=SA_path)
 SA_ds.to_csv('SA_ds.csv')
 print('\nSA is done!\n\n')
 
-SAM_path = '/home/hmarefat/scratch/Paper_3/WF_ADM_mesh_ML/140.005705/'
+SAM_path = '/path/to/SAM_Case/Timestep/'
 SAM_ds = dataCollector(main_path=SAM_path)
 SAM_ds.to_csv('SAM_ds.csv')
 print('\nSAM is done!\n\n')
